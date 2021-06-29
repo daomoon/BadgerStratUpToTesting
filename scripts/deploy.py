@@ -17,7 +17,7 @@ def deploy():
   """
     Deploys, vault, controller and strats and wires them up for you to test
   """
-  deployer = accounts[0]
+  deployer = accounts[1]
 
   strategist = deployer
   keeper = deployer
