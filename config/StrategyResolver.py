@@ -9,7 +9,7 @@ class StrategyResolver(StrategyCoreResolver):
             Specifies extra check for ordinary operation on withdrawal
             Use this to verify that balances in the get_strategy_destinations are properly set
         """
-        assert after.balances("want", "aToken") < before.balance("want", "aToken")
+        assert after.balances("want", "aToken") < before.balances("want", "aToken")
 
     def hook_after_confirm_deposit(self, before, after, params):
         """
