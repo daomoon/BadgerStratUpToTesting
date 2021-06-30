@@ -17,8 +17,6 @@ import "../interfaces/aave/IAaveIncentivesController.sol";
 import "../interfaces/uniswap/ISwapRouter.sol";
 
 
-
-
 import {
     BaseStrategy
 } from "../deps/BaseStrategy.sol";
