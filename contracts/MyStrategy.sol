@@ -84,9 +84,12 @@ contract MyStrategy is BaseStrategy {
     
     /// @dev Returns true if this strategy requires tending
     function isTendable() public override view returns (bool) {
-        return true;
+        if (balanceOfWant() > 1000) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
     // @dev These are the tokens that cannot be moved except by the vault
     function getProtectedTokens() public override view returns (address[] memory) {
         address[] memory protectedTokens = new address[](3);

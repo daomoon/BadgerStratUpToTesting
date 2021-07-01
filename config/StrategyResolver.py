@@ -59,7 +59,7 @@ class StrategyResolver(StrategyCoreResolver):
 
         (Strategy Must Implement)
         """
-        assert after.get("strategy.isTendable") == True
+        assert after.get("strategy.isTendable") == False
 
         assert before.get("strategy.balanceOfWant") > 0
 
