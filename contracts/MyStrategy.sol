@@ -81,6 +81,22 @@ contract MyStrategy is BaseStrategy {
         // aTokens
         return IERC20Upgradeable(aToken).balanceOf(address(this));
     }
+
+    function ourAccountData() public view returns (uint256, uint256, uint256, uint256, uint256, uint256) {
+        (uint totalCollateralETH,
+        uint totalDebtETH,
+        uint availableBorrowsETH,
+        uint currentLiquidationThreshold,
+        uint ltv,
+        uint healthFactor) = ILendingPool(LENDING_POOL).getUserAccountData(address(this));
+        return (totalCollateralETH, totalDebtETH, availableBorrowsETH, currentLiquidationThreshold, ltv, healthFactor);
+
+    }
+
+    function getLtv() public view returns (uint256) {
+    ( , , , , uint256 ltv , ) = ourAccountData();
+        return ltv;
+    }
     
     /// @dev Returns true if this strategy requires tending
     function isTendable() public override view returns (bool) {

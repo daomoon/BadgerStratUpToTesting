@@ -8,6 +8,7 @@ from config import (
   FEES
 )
 from dotmap import DotMap
+from helpers.constants import MaxUint256
 
 
 def main():
@@ -68,7 +69,7 @@ def deploy():
     FEES
   )
 
-  ## Tool that verifies bytecode (run independetly) <- Webapp for anyone to verify
+  ## Tool that verifies bytecode (run independently) <- Webapp for anyone to verify
 
   ## Set up tokens
   want = interface.IERC20(WANT)
@@ -89,6 +90,24 @@ def deploy():
     9999999999999999,
     {"from": deployer, "value": 5000000000000000000}
   )
+
+  startingBalance = want.balanceOf(deployer)
+
+  depositAmount = startingBalance // 2
+  assert startingBalance >= depositAmount
+  assert startingBalance >= 0
+  # End Setup
+
+  # Deposit
+  assert want.balanceOf(sett) == 0
+
+  want.approve(sett, MaxUint256, {"from": deployer})
+  sett.deposit(depositAmount, {"from": deployer})
+
+  available = sett.available()
+  assert available > 0
+
+  sett.earn({"from": deployer})
 
   return DotMap(
     deployer=deployer,
