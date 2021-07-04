@@ -13,6 +13,7 @@ import "../interfaces/badger/IController.sol";
 
 import "../interfaces/aave/ILendingPool.sol";
 import "../interfaces/aave/IAaveIncentivesController.sol";
+import "../interfaces/aave/IPriceOracleGetter.sol";
 
 import "../interfaces/uniswap/ISwapRouter.sol";
 
@@ -30,11 +31,13 @@ contract MyStrategy is BaseStrategy {
     address public aToken; // Token we provide liquidity with
     address public reward; // Token we farm and swap to want / lpComponent
 
+    address public constant PRICE_ORACLE = 0xA50ba011c48153De246E5192C8f9258A2ba79Ca9;
     address public constant LENDING_POOL = 0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9;
     address public constant INCENTIVES_CONTROLLER = 0xd784927Ff2f95ba542BfC824c8a8a98F3495f6b5;
     address public constant ROUTER = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
     address public constant AAVE_TOKEN = 0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9;
     address public constant WETH_TOKEN = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+    address public constant GUSD = 0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd;
 
     function initialize(
         address _governance,
@@ -97,6 +100,11 @@ contract MyStrategy is BaseStrategy {
     ( , , , , uint256 ltv , ) = getAccountData();
         return ltv;
     }
+
+    function getPrice(address token) public view returns (uint256) {
+        return IPriceOracleGetter(PRICE_ORACLE).getAssetPrice(token);
+
+    }
     
     /// @dev Returns true if this strategy requires tending
     function isTendable() public override view returns (bool) {
@@ -106,6 +114,7 @@ contract MyStrategy is BaseStrategy {
             return false;
         }
     }
+
     // @dev These are the tokens that cannot be moved except by the vault
     function getProtectedTokens() public override view returns (address[] memory) {
         address[] memory protectedTokens = new address[](3);
@@ -131,7 +140,6 @@ contract MyStrategy is BaseStrategy {
             require(address(protectedTokens[x]) != _asset, "Asset is protected");
         }
     }
-
 
     /// @dev invest the amount of want
     /// @notice When this function is called, the controller has already sent want to this
