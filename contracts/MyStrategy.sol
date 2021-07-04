@@ -82,7 +82,7 @@ contract MyStrategy is BaseStrategy {
         return IERC20Upgradeable(aToken).balanceOf(address(this));
     }
 
-    function ourAccountData() public view returns (uint256, uint256, uint256, uint256, uint256, uint256) {
+    function getAccountData() public view returns (uint256, uint256, uint256, uint256, uint256, uint256) {
         (uint totalCollateralETH,
         uint totalDebtETH,
         uint availableBorrowsETH,
@@ -94,7 +94,7 @@ contract MyStrategy is BaseStrategy {
     }
 
     function getLtv() public view returns (uint256) {
-    ( , , , , uint256 ltv , ) = ourAccountData();
+    ( , , , , uint256 ltv , ) = getAccountData();
         return ltv;
     }
     
