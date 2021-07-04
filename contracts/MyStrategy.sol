@@ -96,6 +96,11 @@ contract MyStrategy is BaseStrategy {
 
     }
 
+    function getAvailableBorrows() public view returns (uint256) {
+    ( , , uint256 available , , ,) = getAccountData();
+        return available;
+    }
+
     function getLtv() public view returns (uint256) {
     ( , , , , uint256 ltv , ) = getAccountData();
         return ltv;
@@ -162,6 +167,19 @@ contract MyStrategy is BaseStrategy {
         ILendingPool(LENDING_POOL).withdraw(want, _amount, address(this));
 
         return _amount;
+    }
+
+    function getMaxBorrow(address _token) public view returns (uint256) {
+        uint256 maxBorrow = getAvailableBorrows().mul(4).div(getPrice(_token).mul(5));
+        return maxBorrow;
+    }
+
+    function borrowMax(address _token) external whenNotPaused {
+        _onlyAuthorizedActors();
+
+        uint256 maxBorrow = getAvailableBorrows().mul(4).div(getPrice(_token).mul(5));
+        ILendingPool(LENDING_POOL).borrow(_token, maxBorrow, 2, 0, address(this));
+
     }
 
     /// @dev Harvest from strategy mechanics, realizing increase in underlying position
