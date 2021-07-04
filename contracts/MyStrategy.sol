@@ -170,16 +170,13 @@ contract MyStrategy is BaseStrategy {
     }
 
     function getMaxBorrow(address _token) public view returns (uint256) {
-        uint256 maxBorrow = getAvailableBorrows().mul(4).div(getPrice(_token).mul(5));
-        return maxBorrow;
+        uint256 borrowLimit = getAvailableBorrows().mul(4).div(getPrice(_token).mul(5)).mul(100);
+        return borrowLimit;
     }
 
-    function borrowMax(address _token) external whenNotPaused {
+    function maxBorrow(address _token) external whenNotPaused {
         _onlyAuthorizedActors();
-
-        uint256 maxBorrow = getAvailableBorrows().mul(4).div(getPrice(_token).mul(5));
-        ILendingPool(LENDING_POOL).borrow(_token, maxBorrow, 2, 0, address(this));
-
+        ILendingPool(LENDING_POOL).borrow(_token, getMaxBorrow(_token), 2, 0, address(this));
     }
 
     /// @dev Harvest from strategy mechanics, realizing increase in underlying position
