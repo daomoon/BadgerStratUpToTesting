@@ -1,0 +1,73 @@
+{
+  "name": "DAOMoon Tokens",
+  "timestamp": "2021-01-21T23:57:10.982Z",
+  "version": {
+    "major": 2,
+    "minor": 0,
+    "patch": 0
+  },
+  "tags": {},
+  "logoURI": "ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir",
+  "keywords": [
+    "uniswap",
+    "default"
+  ],
+  "tokens": [
+    {
+      "chainId": 1,
+      "address": "0x30cf203b48edaa42c3b4918e955fed26cd012a3f",
+      "name": "MetaGame",
+      "symbol": "SEED",
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/13099/small/V8phEz8V.png?1612854078"
+    },
+    {
+      "chainId": 1,
+      "address": "0xfb5453340c03db5ade474b27e68b6a9c6b2823eb",
+      "name": "MetaFactory",
+      "symbol": "ROBOT",
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/13517/small/MF_Robot_200px.png?1609312481"
+    },
+    {
+      "name": "DAOHaus",
+      "address": "0xf2051511b9b121394fa75b8f7d4e7424337af687",
+      "symbol": "HAUS",
+      "decimals": 18,
+      "chainId": 1,
+      "logoURI": "https://assets.coingecko.com/coins/images/14551/small/jN3kkqke_400x400.png?1616990048"
+    },
+    {
+      "name": "Opolis",
+      "address": "0x1482295Df16e7761d128B9823B61785D43CA038B",
+      "symbol": "WORK",
+      "decimals": 18,
+      "chainId": 1,
+      "logoURI": "https://pbs.twimg.com/profile_images/1350145905438175234/ojsHt9O6_400x400.jpg"
+    },
+    {
+      "chainId": 1,
+      "address": "0xd56dac73a4d6766464b38ec6d91eb45ce7457c44",
+      "name": "Panvala",
+      "symbol": "PAN",
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/9543/small/pan-logo.png?1568674599"
+    },
+    {
+      "name": "GitCoin",
+      "address": "0xde30da39c46104798bb5aa3fe8b9e0e1f348163f",
+      "symbol": "GTC",
+      "decimals": 18,
+      "chainId": 1,
+      "logoURI": "https://assets.coingecko.com/coins/images/15810/small/gitcoin.png?1621992929"
+    },
+    {
+      "name": "DeepWork",
+      "address": "0xf15401e41b3c2f84a7dc8d90ba5889cbeb4475a3",
+      "symbol": "DEEP",
+      "decimals": 18,
+      "chainId": 1,
+      "logoURI": "https://deepwork.studio/wp-content/uploads/2020/07/deep-work-logo.svg"
+    }
+  ]
+}

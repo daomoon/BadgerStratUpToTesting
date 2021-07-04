@@ -1,0 +1,145 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/dave/work/opensource/metafam/hackathons/daomoon-frontend/packages/hardhat/contracts/YourContract.sol": {
+      "lastModificationDate": 1625143112181,
+      "contentHash": "259fb1213ef1393448ab9b1253216503",
+      "sourceName": "contracts/YourContract.sol",
+      "solcConfig": {
+        "version": "0.6.7",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0 <0.7.0"
+      ],
+      "artifacts": [
+        "YourContract"
+      ]
+    },
+    "/home/dave/work/opensource/metafam/hackathons/daomoon-frontend/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1625147083736,
+      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.6.7",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    },
+    "/home/dave/work/opensource/metafam/hackathons/daomoon/packages/hardhat/contracts/YourContract.sol": {
+      "lastModificationDate": 1625431501538,
+      "contentHash": "259fb1213ef1393448ab9b1253216503",
+      "sourceName": "contracts/YourContract.sol",
+      "solcConfig": {
+        "version": "0.6.7",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0 <0.7.0"
+      ],
+      "artifacts": [
+        "YourContract"
+      ]
+    },
+    "/home/dave/work/opensource/metafam/hackathons/daomoon/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1625431650972,
+      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.6.7",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    }
+  }
+}
