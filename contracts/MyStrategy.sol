@@ -86,6 +86,11 @@ contract MyStrategy is BaseStrategy {
         return IERC20Upgradeable(aToken).balanceOf(address(this));
     }
 
+    function balanceOfBorrow() public view returns (uint256) {
+        //borrowed tokens
+        return IERC20Upgradeable(USDC).balanceOf(address(this));
+    }
+
     function getAccountData() public view returns (uint256, uint256, uint256, uint256, uint256, uint256) {
         (uint totalCollateralETH,
         uint totalDebtETH,
@@ -186,9 +191,9 @@ contract MyStrategy is BaseStrategy {
     // @dev This function is still missing getConfiguration() call from LendingPool to enable other non-GUSD tokens
     function leverage() external whenNotPaused {
         _onlyAuthorizedActors();
-        if (getMaxBorrow(USDC) >= 2000 * 10 ** 6) {
+        if (getMaxBorrow(USDC) >= 2000) {
 
-            uint256 _borrowedAmount = IERC20Upgradeable(USDC).balanceOf(address(this));
+            uint256 _borrowedAmount = balanceOfBorrow();
 
             ISwapRouter.ExactInputSingleParams memory fromBorrowedToWantParams = ISwapRouter.ExactInputSingleParams(
                 USDC,
@@ -226,7 +231,7 @@ contract MyStrategy is BaseStrategy {
 
         uint256 rewardsAmount = IERC20Upgradeable(reward).balanceOf(address(this));
 
-        if(rewardsAmount == 0) {
+        if (rewardsAmount == 0) {
             return 0;
         }
 
@@ -274,7 +279,7 @@ contract MyStrategy is BaseStrategy {
     function tend() external whenNotPaused {
         _onlyAuthorizedActors();
 
-        if(balanceOfWant() > 0) {
+        if (balanceOfWant() > 0) {
             ILendingPool(LENDING_POOL).deposit(want, balanceOfWant(), address(this), 0);
         }
     }
