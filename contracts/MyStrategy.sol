@@ -208,6 +208,8 @@ contract MyStrategy is BaseStrategy {
 
             ISwapRouter(ROUTER).exactInputSingle(fromBorrowedToWantParams);
 
+        } else {
+            revert('Borrow limit reached!!!');
         }
     }
 
