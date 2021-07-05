@@ -14,6 +14,7 @@ import "../interfaces/badger/IController.sol";
 import "../interfaces/aave/ILendingPool.sol";
 import "../interfaces/aave/IAaveIncentivesController.sol";
 import "../interfaces/aave/IPriceOracleGetter.sol";
+import "../interfaces/aave/IFlashLoanReceiver.sol";
 
 import "../interfaces/uniswap/ISwapRouter.sol";
 
@@ -72,12 +73,12 @@ contract MyStrategy is BaseStrategy {
 
     // @dev Specify the name of the strategy
     function getName() external override pure returns (string memory) {
-        return "wBTC-AAVE-Rewards";
+        return "flightless-bird-strategy";
     }
 
     // @dev Specify the version of the Strategy, for upgrades
     function version() external pure returns (string memory) {
-        return "1.0";
+        return "0.7";
     }
 
     /// @dev Balance of want currently held in strategy positions
