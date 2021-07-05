@@ -10,6 +10,7 @@ import {
   Stack,
   Collapse,
   Icon,
+  Image,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -43,7 +44,8 @@ export default function AppHeader({
   logoutOfWeb3Modal,
   blockExplorer,
   setRoute,
-  route
+  route,
+  logo,
 }) {
   const { isOpen, onToggle } = useDisclosure();
   console.log(route, setRoute);
@@ -66,7 +68,7 @@ export default function AppHeader({
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}>
-            🌖 DAOMoon
+            <Image src={logo} alt="DAOMoon" maxW="50px" height="auto" />
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>

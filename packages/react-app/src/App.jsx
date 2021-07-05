@@ -23,6 +23,8 @@ import { INFURA_ID, ETHERSCAN_KEY, DAI_ADDRESS, DAI_ABI } from "./constants";
 
 import space from "./assets/sky.2.jpg";
 import astronaut from "./assets/astronaut.png";
+import logo from "./assets/logo.png";
+import banner from "./assets/banner.png";
 
 const { Text, Title, Paragraph } = Typography;
 
@@ -153,6 +155,7 @@ function App({ Component, props, pageProps }) {
             setRoute={setRoute}
             route={route}
             gasPrice={gasPrice}
+              logo={logo}
           />
 
           <Box d="flex" as="section" flex={1} alignItems="center" justifyContent="center" pb="50px">
@@ -161,7 +164,8 @@ function App({ Component, props, pageProps }) {
                 <Helmet>
                   <meta charSet="utf-8" />
                     <title>Stake on dMoon - DAOMoon</title>
-                  <link rel="canonical" href="http://mysite.com/example" />
+                    <link rel="canonical" href="https://local.luxumbra.dev" />
+                    <meta data-react-helmet="true" property="og:image" content={banner}></meta>
                 </Helmet>
                 <Row justify="center">
                     {/* <Swap
