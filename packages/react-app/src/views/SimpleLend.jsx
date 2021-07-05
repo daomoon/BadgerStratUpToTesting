@@ -166,6 +166,10 @@ function SimpleLend({ selectedProvider, ethPrice }) {
         message: 'Token transfer approved',
         description:
           `Aave can now move up to ${formatUnits(amountToApprove, assetData.decimals)} ${assetData.symbol}`,
+        style: {
+          backgroundColor: "silver",
+          borderRadius: "5px"
+        }
       })
     } catch (e) {
       console.log(e)
@@ -174,6 +178,10 @@ function SimpleLend({ selectedProvider, ethPrice }) {
         message: 'Approval failed',
         description:
           `${assetData.symbol} approval did not take place`,
+        style: {
+          backgroundColor: "silver",
+          borderRadius: "5px"
+        }
       })
     }
     getTokenBalance()
@@ -212,6 +220,10 @@ function SimpleLend({ selectedProvider, ethPrice }) {
         message: `${type} complete 👻`,
         description:
           <><Text>{`${type}: ${_useMax ? 'maximum' : amount} ${assetData.symbol}, transaction: `}</Text><Text copyable>{_transaction.hash}</Text></>,
+        style: {
+          backgroundColor: "silver",
+          borderRadius: "5px"
+        },
       });
       getTokenBalance()
       getReserveData()
@@ -223,6 +235,10 @@ function SimpleLend({ selectedProvider, ethPrice }) {
         message: `${type} failed 🙁`,
         description:
           <><Text>{`${type}: ${amount} ${assetData.symbol} did not take place`}</Text></>,
+        style: {
+          backgroundColor: "silver",
+          borderRadius: "5px"
+        }
       });
       setTransacting(false)
     }
@@ -258,7 +274,7 @@ function SimpleLend({ selectedProvider, ethPrice }) {
               setAmount(e)
             }}
             />
-            <Popover trigger="click" content={
+            <Popover trigger="click" color="silver" content={
               <Space direction="vertical">
                 <Row justify="center">
                   <Button loading={approving} onClick={() => { approve(amount.toString()) }}>Approve Amount</Button>

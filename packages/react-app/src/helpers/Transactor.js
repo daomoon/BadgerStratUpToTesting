@@ -67,6 +67,10 @@ export default function Transactor(provider, gasPrice, etherscan) {
             message: "Local Transaction Sent",
             description: result.hash,
             placement: "bottomRight",
+            style: {
+              backgroundColor: "silver",
+              borderRadius: "5px"
+            }
           });
         }
 

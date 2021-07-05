@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { WalletOutlined, QrcodeOutlined, SendOutlined, KeyOutlined } from "@ant-design/icons";
-import { Tooltip, Drawer } from "antd";
-import { Box, Heading, Text, Button, OrderedList, ListItem, HStack, Image } from "@chakra-ui/react";
+import { Tooltip, Drawer, Statistic } from "antd";
+import { Box, Heading, Text, Button, List, OrderedList, UnorderedList, ListItem, HStack, Image } from "@chakra-ui/react";
 import QR from "qrcode.react";
 import { parseEther } from "@ethersproject/units";
 import { useUserAddress } from "eth-hooks";
@@ -38,7 +38,7 @@ export default function Wallet(props) {
   const [toAddress, setToAddress] = useState();
   const [pk, setPK] = useState()
   const [walletOpen, setWalletOpen] = useState(false)
-
+  const [showUsdPrice, setShowUsdPrice] = useState(true)
 
   const providerSend = props.provider ? (
     <Tooltip title="Wallet">
@@ -356,26 +356,40 @@ export default function Wallet(props) {
     </Box>
   );
 
+
+  userStats = (
+    <Box>
+      <Box d="flex" flexFlow="row nowrap" alignItems="flex-start" justifyContent="space-between" sx={{ "span, div": { color: "gray.200" }, py: 5 }}>
+        <Box>
+          <Statistic title={"collateral"} value={6000} suffix={showUsdPrice ? "USD" : "ETH"} valueStyle={{
+            color: "gray.200"
+          }} />
+        </Box>
+        <Box>
+          <Statistic title={"debt"} value={800} suffix={showUsdPrice ? "USD" : "ETH"} valueStyle={{
+            color: "gray.200"
+          }} />
+        </Box>
+        <Box>
+          <Statistic title={"allowance"} value={1700} suffix={showUsdPrice ? "USD" : "ETH"} valueStyle={{
+            color: "gray.200"
+          }} />
+        </Box>
+      </Box>
+      <List styleType="none" spacing={3}>
+        <ListItem>Liquidation Threshold: 65%</ListItem>
+        <ListItem>LTV: 6000</ListItem>
+        <ListItem>Health Factor: 1.85</ListItem>
+        <ListItem>Active assets: 1</ListItem>
+      </List>
+    </Box>
+  )
   yieldInfo = (
-    <Box mt={4}>
-      <Heading as="h3" size="md" variant="brand">Your yield</Heading>
-      <Text>Yield</Text>
+    <Box mt={8}>
+      <Heading as="h3" size="md" variant="brand">Your positions</Heading>
+      {userStats}
     </Box>
   );
-
-  // userStats = (
-  //   <Box>
-  //     <Box>
-  //       <Statistic title={"collateral"} value={formattedValue(userAccountData.totalCollateralETH)} suffix={showUsdPrice ? "USD" : "ETH"} />
-  //     </Box>
-  //     <Box>
-  //       <Statistic title={"debt"} value={formattedValue(userAccountData.totalDebtETH)} suffix={showUsdPrice ? "USD" : "ETH"} />
-  //     </Box>
-  //     <Box>
-  //       <Statistic title={"allowance"} value={formattedValue(userAccountData.availableBorrowsETH)} suffix={showUsdPrice ? "USD" : "ETH"} />
-  //     </Box>
-  //   </Box>
-  // )
 
   walletFooter = [
     <Box width="100%" key="display">
