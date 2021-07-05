@@ -378,12 +378,14 @@ function Swap({ selectedProvider, tokenListURI }) {
   return (
     <Card
       title={
-        <Space><Typography>🌑 Send it to dMoon 🌕</Typography></Space>
+        <Space><Typography>🌑 Buy dMoon 🌕</Typography></Space>
       }
       extra={<Button type="text" onClick={() => { setSettingsVisible(true) }}><SettingOutlined /></Button>}
       style={{
         borderRadius: "8px",
-        boxShadow: "0 0 15px rgba(0,0,0,0.3)"
+        boxShadow: "0 0 15px rgba(255,255,255,0.3)",
+        backgroundColor: "rgba(255,255,255,0.8)",
+        backdropFilter: "blur(7px)"
       }}
     >
     <Space direction="vertical">

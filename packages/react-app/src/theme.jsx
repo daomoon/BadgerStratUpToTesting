@@ -9,6 +9,13 @@ export const dMoonTheme = extendTheme({
         bg: "black",
         color: "white",
         fontFamily: 'Ubuntu',
+        width: "100%",
+        maxWidth: "100vw",
+        overflowX: "hidden",
+        position: "relative",
+        ".web3modal-modal-container": {
+          zIndex: 2000
+        }
       },
       "h1, h2, h3, h4": {
       },

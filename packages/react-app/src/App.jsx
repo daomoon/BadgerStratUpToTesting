@@ -15,11 +15,15 @@ import { useExchangePrice, useGasPrice, useUserProvider, useContractLoader, useC
 import { AppHeader, Footer, Account, Ramp, Contract, GasGauge, Swap } from "./components";
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
-import { Home, About, Pool } from "./views";
+import { SimpleLend, About, Pool } from "./views";
 import { dMoonTheme } from "./theme";
 
 
 import { INFURA_ID, ETHERSCAN_KEY, DAI_ADDRESS, DAI_ABI } from "./constants";
+
+import space from "./assets/sky.2.jpg";
+import astronaut from "./assets/astronaut.png";
+
 const { Text, Title, Paragraph } = Typography;
 
 // 😬 Sorry for all the console logging 🤡
@@ -122,7 +126,18 @@ function App({ Component, props, pageProps }) {
   return (
     <ChakraProvider theme={dMoonTheme}>
       <BrowserRouter>
-        <Box className="App" d="flex" flexFlow="column wrap" minHeight="100vh" position="relative">
+        <Box
+          className="App"
+          position="relative"
+        >
+          <Box
+            backgroundColor="transparent"
+            d="flex"
+            flexFlow="column wrap"
+            minHeight="100vh"
+            position="relative"
+            zIndex={2}
+          >
 
           {/* ✏️ Edit the header and change the title to your project name */}
           <AppHeader
@@ -145,14 +160,15 @@ function App({ Component, props, pageProps }) {
               <Route exact path="/" withRouter>
                 <Helmet>
                   <meta charSet="utf-8" />
-                  <title>Swap dMoon - DAOMoon</title>
+                    <title>Stake on dMoon - DAOMoon</title>
                   <link rel="canonical" href="http://mysite.com/example" />
                 </Helmet>
                 <Row justify="center">
-                  <Swap
+                    {/* <Swap
                     selectedProvider={userProvider}
                     tokenListURI={tokenListURI}
-                  />
+                  /> */}
+                    <SimpleLend selectedProvider={userProvider} ethPrice={price} />
                 </Row>
               </Route>
               <Route path="/pool" withRouter>
@@ -176,9 +192,39 @@ function App({ Component, props, pageProps }) {
                 </Row>
               </Route>
             </Switch>
+            </Box>
+            <Footer />
           </Box>
-
-          <Footer />
+          <Box
+            position="absolute"
+            top={0}
+            left={0}
+            width="100%"
+            height="100%"
+            sx={{
+              backgroundImage: space,
+              backgroundSize: "cover",
+              backgroundPosition: "bottom left",
+              backgroundRepeat: "no-repeat",
+              zIndex: 0
+            }}
+          />
+          <Box
+            position="absolute"
+            bottom="50%"
+            left="27%"
+            width={250}
+            height={250}
+            sx={{
+              backgroundImage: astronaut,
+              backgroundSize: "contain",
+              backgroundPosition: "bottom left",
+              backgroundRepeat: "no-repeat",
+              zIndex: 1,
+              transition: "transform 0.5s ease-in-out",
+              transform: `rotate(-60deg) scale(${route && route === "/about" ? 1 : 1})`
+            }}
+          />
         </Box>
       </BrowserRouter>
     </ChakraProvider >
@@ -200,6 +246,7 @@ const web3Modal = new Web3Modal({
       },
     },
   },
+  theme: "dark",
 });
 
 const logoutOfWeb3Modal = async () => {

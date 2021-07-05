@@ -34,6 +34,7 @@ export default function Wallet(props) {
   const [open, setOpen] = useState();
   const [qr, setQr] = useState();
   const [amount, setAmount] = useState();
+  const [userAccountData, setUserAccountData] = useState()
   const [toAddress, setToAddress] = useState();
   const [pk, setPK] = useState()
   const [walletOpen, setWalletOpen] = useState(false)
@@ -79,6 +80,7 @@ export default function Wallet(props) {
   let daoTokensList;
   let yieldInfo;
   let walletFooter = [];
+  let userStats;
 
   if (qr) {
     qrDisplay = (
@@ -360,6 +362,20 @@ export default function Wallet(props) {
       <Text>Yield</Text>
     </Box>
   );
+
+  // userStats = (
+  //   <Box>
+  //     <Box>
+  //       <Statistic title={"collateral"} value={formattedValue(userAccountData.totalCollateralETH)} suffix={showUsdPrice ? "USD" : "ETH"} />
+  //     </Box>
+  //     <Box>
+  //       <Statistic title={"debt"} value={formattedValue(userAccountData.totalDebtETH)} suffix={showUsdPrice ? "USD" : "ETH"} />
+  //     </Box>
+  //     <Box>
+  //       <Statistic title={"allowance"} value={formattedValue(userAccountData.availableBorrowsETH)} suffix={showUsdPrice ? "USD" : "ETH"} />
+  //     </Box>
+  //   </Box>
+  // )
 
   walletFooter = [
     <Box width="100%" key="display">

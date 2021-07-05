@@ -262,12 +262,8 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: 'Swap dMoon',
+    label: 'Stake dMoon',
     href: '/',
-  },
-  {
-    label: 'Pool dMoon',
-    href: '/pool',
   },
   {
     label: 'About dMoon',
