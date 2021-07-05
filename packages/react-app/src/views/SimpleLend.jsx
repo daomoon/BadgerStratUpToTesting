@@ -287,7 +287,7 @@ function SimpleLend({ selectedProvider, ethPrice }) {
             }>
               <Button size="large"><ArrowDownOutlined /></Button>
             </Popover>
-            <Popover trigger="click" content={
+            <Popover trigger="click" color="silver" content={
               <Space direction="vertical">
                 <Row justify="center">
                   <Space>
@@ -298,6 +298,17 @@ function SimpleLend({ selectedProvider, ethPrice }) {
               </Space>
             }>
               <Button size="large"><ArrowUpOutlined /></Button>
+            </Popover>
+            <Popover trigger="click" color="silver" content={
+              <Space direction="vertical">
+                <Row justify="center">
+                  <Space>
+                    <Button type="primary" loading={transacting} disabled={!userAssetData || parseFloat(formatUnits(userAssetData['currentATokenBalance'], assetData.decimals)) === 0} onClick={() => { makeTransaction("withdraw", true) }}>Use 1x leverage</Button>
+                  </Space>
+                </Row>
+              </Space>
+            }>
+              <Button size="large">🌕</Button>
             </Popover>
           </Row>
           <Card>
@@ -340,15 +351,10 @@ function SimpleLend({ selectedProvider, ethPrice }) {
 
       extra={
         <Space>
-          <Select showSearch value={liveAsset} style={{ width: '120px' }} size={'medium'} onChange={(value) => {
-            console.log(value)
-            setLiveAsset(value)
-          }} filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          } optionFilterProp="children">
-            {reserveTokens && reserveTokens.map(token => (
-              <Option key={token.symbol} value={token.symbol}>{token.symbol}</Option>
-            ))}
+          <Select showSearch style={{ width: '120px' }} size={'medium'} optionFilterProp="children">
+            {/* {reserveTokens && reserveTokens.map(token => ( */}
+            <Option key={"wBTC"} value={"wBTC"}>{"wBTC"}</Option>
+            {/* ))} */}
           </Select>
           <Button type="text" onClick={() => { setSettingsVisible(true) }}><SettingOutlined /></Button>
         </Space>}

@@ -359,29 +359,27 @@ export default function Wallet(props) {
 
   userStats = (
     <Box>
-      <Box d="flex" flexFlow="row nowrap" alignItems="flex-start" justifyContent="space-between" sx={{ "span, div": { color: "gray.200" }, py: 5 }}>
+      <Box d="flex" flexFlow="row nowrap" alignItems="flex-start" justifyContent="space-between" sx={{
+        "span, div": { color: "gray.200" }, ".ant-statistic-content-suffix": {
+          fontSize: "14px"
+        }, py: 5
+      }}>
         <Box>
-          <Statistic title={"collateral"} value={6000} suffix={showUsdPrice ? "USD" : "ETH"} valueStyle={{
+          <Statistic title={"Staked"} value={6000} suffix={showUsdPrice ? "USD" : "ETH"} valueStyle={{
             color: "gray.200"
           }} />
         </Box>
         <Box>
-          <Statistic title={"debt"} value={800} suffix={showUsdPrice ? "USD" : "ETH"} valueStyle={{
+          <Statistic title={"Token balances"} value={"15,000"} suffix={"USD"} valueStyle={{
             color: "gray.200"
           }} />
         </Box>
         <Box>
-          <Statistic title={"allowance"} value={1700} suffix={showUsdPrice ? "USD" : "ETH"} valueStyle={{
+          <Statistic title={"TVL"} value={"1.7million"} suffix={"USD"} valueStyle={{
             color: "gray.200"
           }} />
         </Box>
       </Box>
-      <List styleType="none" spacing={3}>
-        <ListItem>Liquidation Threshold: 65%</ListItem>
-        <ListItem>LTV: 6000</ListItem>
-        <ListItem>Health Factor: 1.85</ListItem>
-        <ListItem>Active assets: 1</ListItem>
-      </List>
     </Box>
   )
   yieldInfo = (
